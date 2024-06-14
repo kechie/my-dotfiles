@@ -40,5 +40,7 @@ export NVM_DIR="$HOME/.nvm"
 [ -s "$NVM_DIR/nvm.sh" ] && \. "$NVM_DIR/nvm.sh"  # This loads nvm
 [ -s "$NVM_DIR/bash_completion" ] && \. "$NVM_DIR/bash_completion"  # This loads nvm bash_completion
 
-# TODO: check if homebrew is installed
-eval "$(/home/linuxbrew/.linuxbrew/bin/brew shellenv)"
+# linux homebrew
+if [ -d "$HOME/linuxbrew/.linuxbrew/bin" ] ; then
+  eval "$(/home/linuxbrew/.linuxbrew/bin/brew shellenv)"
+fi
