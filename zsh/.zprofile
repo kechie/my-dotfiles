@@ -4,46 +4,41 @@
 
 # added by eihcek kechie
 # add ~/bin to path if directory exists
-# for homebrew stuff (mac os))
-# eval "$(/opt/homebrew/bin/brew shellenv)"
-
-# local bin paths
-
 if [ -d "$HOME/bin" ] ; then
-    PATH="$HOME/bin:$PATH"
+  PATH="$HOME/bin:$PATH"
 fi
 
 if [ -d "$HOME/.local/bin" ] ; then
-    PATH="$HOME/.local/bin:$PATH"
+  PATH="$HOME/.local/bin:$PATH"
 fi
 
-# Rust environment
+#Rust environment
 if [ -x $HOME/.cargo/env ]; then
-  . "$HOME/.cargo/env"
+. "$HOME/.cargo/env"
 fi
 
-# MacOS Homebrew
-if [ -d /opt/homebrew ]; then
-  eval "$(/opt/homebrew/bin/brew shellenv)"
-fi
-
-# Nodejs
+#Nodejs
+VERSION=v20.11.0
 VERSION=v20.11.1
-NODE_ARCH=darwin-arm64
-export PATH=$HOME/.local/bin/node-$VERSION-$NODE_ARCH/bin:$PATH
+DISTRO=linux-x64
+export PATH=$HOME/.local/bin/node-$VERSION-$DISTRO/bin:$PATH
 
-# Open JDK 11 or 17 (needed for React Native)
-#JDK11VERSION=11.0.21\+9
-#JD11KDISTRO=linux-x64
-#JDK17VERSION=17.0.9\+9
-#JDK17DISTRO=linux-x64
-#export PATH=$HOME/.local/bin/jdk-$JDK17VERSION/bin:$PATH
+# Open JDK 11 (needed for React Native)
+JDK11VERSION=11.0.21\+9
+JD11KDISTRO=linux-x64
+JDK17VERSION=17.0.9\+9
+JDK17DISTRO=linux-x64
+export PATH=$HOME/.local/bin/jdk-$JDK17VERSION/bin:$PATH
 
-# Android Environment variables MacOS
-export ANDROID_HOME=$HOME/Library/Android/Sdk
+# Android Environment variables
+export ANDROID_HOME=$HOME/Android/Sdk
 export PATH=$PATH:$ANDROID_HOME/emulator
 export PATH=$PATH:$ANDROID_HOME/platform-tools
 
-#export NVM_DIR="$HOME/.nvm"
-#[ -s "$NVM_DIR/nvm.sh" ] && \. "$NVM_DIR/nvm.sh"  # This loads nvm
-#[ -s "$NVM_DIR/bash_completion" ] && \. "$NVM_DIR/bash_completion"  # This loads nvm bash_completion
+
+export NVM_DIR="$HOME/.nvm"
+[ -s "$NVM_DIR/nvm.sh" ] && \. "$NVM_DIR/nvm.sh"  # This loads nvm
+[ -s "$NVM_DIR/bash_completion" ] && \. "$NVM_DIR/bash_completion"  # This loads nvm bash_completion
+
+# TODO: check if homebrew is installed
+eval "$(/home/linuxbrew/.linuxbrew/bin/brew shellenv)"

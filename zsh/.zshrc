@@ -1,49 +1,14 @@
 # Enable Powerlevel10k instant prompt. Should stay close to the top of ~/.zshrc.
 # Initialization code that may require console input (password prompts, [y/n]
 # confirmations, etc.) must go above this block; everything else may go below.
-if [[ -r "${XDG_CACHE_HOME:-$HOME/.cache}/p10k-instant-prompt-${(%):-%n}.zsh" ]]; then
-  source "${XDG_CACHE_HOME:-$HOME/.cache}/p10k-instant-prompt-${(%):-%n}.zsh"
+#if [[ -r "${XDG_CACHE_HOME:-$HOME/.cache}/p10k-instant-prompt-${(%):-%n}.zsh" ]]; then
+#  source "${XDG_CACHE_HOME:-$HOME/.cache}/p10k-instant-prompt-${(%):-%n}.zsh"
+#fi
+
+if [[ "$OSTYPE" == "linux-gnu" ]]; then
+  source "$HOME/.zprofile"
 fi
 
-# added by eihcek kechie
-# add ~/bin to path if directory exists
-if [ -d "$HOME/bin" ] ; then
-  PATH="$HOME/bin:$PATH"
-fi
-
-if [ -d "$HOME/.local/bin" ] ; then
-  PATH="$HOME/.local/bin:$PATH"
-fi
-
-#Rust environment
-if [ -x $HOME/.cargo/env ]; then
-. "$HOME/.cargo/env"
-fi
-
-# Nodejs
-#VERSION=v20.11.0
-VERSION=v20.11.1
-DISTRO=linux-x64
-export PATH=$HOME/.local/bin/node-$VERSION-$DISTRO/bin:$PATH
-
-# Open JDK 11 (needed for React Native)
-JDK11VERSION=11.0.21\+9
-JD11KDISTRO=linux-x64
-JDK17VERSION=17.0.9\+9
-JDK17DISTRO=linux-x64
-export PATH=$HOME/.local/bin/jdk-$JDK17VERSION/bin:$PATH
-
-# Android Environment variables
-export ANDROID_HOME=$HOME/Android/Sdk
-export PATH=$PATH:$ANDROID_HOME/emulator
-export PATH=$PATH:$ANDROID_HOME/platform-tools
-
-
-#export NVM_DIR="$HOME/.nvm"
-#[ -s "$NVM_DIR/nvm.sh" ] && \. "$NVM_DIR/nvm.sh"  # This loads nvm
-#[ -s "$NVM_DIR/bash_completion" ] && \. "$NVM_DIR/bash_completion"  # This loads nvm bash_completion
-# TODO: check if homebrew is installed
-eval "$(/home/linuxbrew/.linuxbrew/bin/brew shellenv)"
 
 ### Added by Zinit's installer
 if [[ ! -f $HOME/.local/share/zinit/zinit.git/zinit.zsh ]]; then
@@ -87,13 +52,13 @@ zinit light trapd00r/LS_COLORS
 autoload -Uz compinit && compinit
 
 # Load powerlevel10k theme
-zinit ice depth"1" # git clone depth
-zinit light romkatv/powerlevel10k
+#zinit ice depth"1" # git clone depth
+#zinit light romkatv/powerlevel10k
 
 #history options
 #
 #
-HISTSIZE=1000
+HISTSIZE=3000
 SAVEHIST=$HISTSIZE
 HISTFILE=~/.zsh_history
 HISTDUP=erase
@@ -106,6 +71,7 @@ bindkey -e
 # ### ctrl+arrows
 bindkey "\e[1;5C" forward-word
 bindkey "\e[1;5D" backward-word
+
 # # urxvt
 bindkey "\eOc" forward-word
 bindkey "\eOd" backward-word
@@ -142,4 +108,4 @@ zstyle ':completion:*:kill:*' command 'ps -u $USER -o pid,%cpu,tty,cputime,cmd'
 
 
 # To customize prompt, run `p10k configure` or edit ~/.p10k.zsh.
-[[ ! -f ~/.p10k.zsh ]] || source ~/.p10k.zsh
+#[[ ! -f ~/.p10k.zsh ]] || source ~/.p10k.zsh
