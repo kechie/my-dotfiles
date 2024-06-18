@@ -1,4 +1,3 @@
-# This is for mac os $HOME/.zprofile
 # set $PATH and $EDITOR here not in $HOME/.zshrc
 # custom prompt and plugins goes there not here
 os_type=$(uname -s)
@@ -16,17 +15,11 @@ if [ -x $HOME/.cargo/env ]; then
 . "$HOME/.cargo/env"
 fi
 
-# MacOS Homebrew
-if [ -d /opt/homebrew ]; then
-  eval "$(/opt/homebrew/bin/brew shellenv)"
-fi
-
-# linux homebrew
-if [ -d "$HOME/../linuxbrew/.linuxbrew/bin" ] ; then
-  eval "$(/home/linuxbrew/.linuxbrew/bin/brew shellenv)"
-fi
-
 if [[ "$os_type"  == "Darwin" ]]; then
+  # MacOS Homebrew
+  if [ -d /opt/homebrew ]; then
+    eval "$(/opt/homebrew/bin/brew shellenv)"
+  fi
 # Android Environment variables MacOS
   export ANDROID_HOME=$HOME/Library/Android/Sdk
   export PATH=$PATH:$ANDROID_HOME/emulator
@@ -34,6 +27,10 @@ if [[ "$os_type"  == "Darwin" ]]; then
 fi
 
 if [[ "$os_type"  == "Linux" ]]; then
+# linux homebrew
+  if [ -d "$HOME/../linuxbrew/.linuxbrew/bin" ] ; then
+    eval "$(/home/linuxbrew/.linuxbrew/bin/brew shellenv)"
+  fi
 # Android Environment variables linux
   export ANDROID_HOME=$HOME/Android/Sdk
   export PATH=$PATH:$ANDROID_HOME/emulator
