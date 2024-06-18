@@ -1,3 +1,4 @@
+# debian or maybe some distros doesn't read .zprofile
 if [[ "$OSTYPE" == "linux-gnu" ]]; then
   source "$HOME/.zprofile"
 fi
@@ -27,9 +28,12 @@ zinit light-mode for \
 
 #zinit ice depth=1; zinit light romkatv/powerlevel10k
 
-zinit light zsh-users/zsh-syntax-highlighting
-zinit light zsh-users//zsh-completions
-zinit light zsh-users//zsh-autosuggestions
+# big three zsh plugins 
+zinit light-mode for \
+  zsh-users/zsh-syntax-highlighting \
+  zsh-users/zsh-completions \
+  zsh-users/zsh-autosuggestions
+
 #zinit light Aloxaf/fzf-tab
 
 zinit snippet OMZP::git
@@ -40,15 +44,10 @@ zinit ice atclone"dircolors -b LS_COLORS > clrs.zsh" \
     atload'zstyle ":completion:*" list-colors “${(s.:.)LS_COLORS}”'
 zinit light trapd00r/LS_COLORS
 
-# Load completions
+# Use modern completion system
 autoload -Uz compinit && compinit
 
-# Load powerlevel10k theme
-#zinit ice depth"1" # git clone depth
-#zinit light romkatv/powerlevel10k
-
 #history options
-#
 #
 HISTSIZE=3000
 SAVEHIST=$HISTSIZE
@@ -65,8 +64,8 @@ bindkey "\e[1;5C" forward-word
 bindkey "\e[1;5D" backward-word
 
 # # urxvt
-bindkey "\eOc" forward-word
-bindkey "\eOd" backward-word
+#bindkey "\eOc" forward-word
+#bindkey "\eOd" backward-word
 
 ### ctrl+delete
 #bindkey "\e[3;5~" kill-word
@@ -98,8 +97,14 @@ zstyle ':completion:*' verbose true
 zstyle ':completion:*:*:kill:*:processes' list-colors '=(#b) #([0-9]#)*=0=01;31'
 zstyle ':completion:*:kill:*' command 'ps -u $USER -o pid,%cpu,tty,cputime,cmd'
 
+# TODO:
 # make oh my posh work in apple terminal as well
 if [ "$TERM_PROGRAM" != "Apple_Terminal" ]; then
 #  eval "$(oh-my-posh init zsh)"
   eval "$(oh-my-posh init zsh --config $HOME/.cache/oh-my-posh/themes/iterm2.omp.json)"
 fi
+
+if [ -f ~/.zsh_aliases ]; then
+    . ~/.zsh_aliases
+fi
+
