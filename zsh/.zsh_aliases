@@ -1,0 +1,44 @@
+# Alias definitions.
+
+# Some tmux-related shell aliases
+
+# Attaches tmux to the last session; creates a new session if none exists.
+alias t='tmux attach || tmux new-session'
+# Attaches tmux to a session (example: ta portal)
+alias ta='tmux attach -t'
+# Creates a new session
+alias tn='tmux new-session'
+# Lists all ongoing sessions
+alias tl='tmux list-sessions'
+
+alias vpslogin='ssh eihcek_at_vps'
+
+if [[ "$os_type"  == "Darwin" ]]; then
+  if [ -x /opt/homebrew/bin/eza ]; then
+    alias ls='/opt/homebrew/bin/eza --color=auto'
+  else
+    alias ls='ls --color=auto'
+  fi
+fi
+
+if [[ "$os_type"  == "Linux" ]]; then
+  if [ -x $HOME/../linuxbrew/.linuxbrew/bin/eza ]; then
+    alias ls='/home/linuxbrew/.linuxbrew/bin/eza --color=auto'
+  else
+    alias ls='ls --color=auto'
+  fi
+fi
+
+#if [ -x /usr/bin/dircolors ]; then
+#    test -r ~/.dircolors && eval "$(dircolors -b ~/.dircolors)" || eval "$(dircolors -b)"
+#    alias ls='ls --color=auto'
+    #alias dir='dir --color=auto'
+    #alias vdir='vdir --color=auto'
+
+    #alias grep='grep --color=auto'
+    #alias fgrep='fgrep --color=auto'
+    #alias egrep='egrep --color=auto'
+#fi
+
+# colored GCC warnings and errors
+export GCC_COLORS='error=01;31:warning=01;35:note=01;36:caret=01;32:locus=01:quote=01'
