@@ -2,15 +2,6 @@
 
 # Some tmux-related shell aliases
 
-# Attaches tmux to the last session; creates a new session if none exists.
-alias t='tmux attach || tmux new-session'
-# Attaches tmux to a session (example: ta portal)
-alias ta='tmux attach -t'
-# Creates a new session
-alias tn='tmux new-session'
-# Lists all ongoing sessions
-alias tl='tmux list-sessions'
-
 alias vpslogin='ssh eihcek_at_vps'
 
 if [[ "$os_type"  == "Darwin" ]]; then
@@ -22,6 +13,17 @@ if [[ "$os_type"  == "Darwin" ]]; then
 fi
 
 if [[ "$os_type"  == "Linux" ]]; then
+  if [ -x /usr/bin/tmux ]; then
+    # Attaches tmux to the last session; creates a new session if none exists split.
+    alias t='tmux attach || tmux new-session\; split-window -h'
+    #alias t='tmux attach || tmux new-session'
+    # Attaches tmux to a session (example: ta portal)
+    #alias ta='tmux attach -t'
+    # Creates a new session
+    #alias tn='tmux new-session'
+    # Lists all ongoing sessions
+    #alias tl='tmux list-sessions'
+  fi
   if [ -x $HOME/../linuxbrew/.linuxbrew/bin/eza ]; then
     alias ls='/home/linuxbrew/.linuxbrew/bin/eza --color=auto'
   else
