@@ -108,3 +108,5 @@ if [ -f ~/.zsh_aliases ]; then
     . ~/.zsh_aliases
 fi
 
+
+PATH=~/.console-ninja/.bin:$PATH
