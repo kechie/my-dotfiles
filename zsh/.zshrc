@@ -108,3 +108,6 @@ if [ -f ~/.zsh_aliases ]; then
     . ~/.zsh_aliases
 fi
 
+#remind certbot certificates expiration
+#
+$HOME/scripts/certbot-remind
