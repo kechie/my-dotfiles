@@ -110,3 +110,4 @@ fi
 
 
 PATH=~/.console-ninja/.bin:$PATH
+LIBVIRT_DEFAULT_URI='qemu:///system'
