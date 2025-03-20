@@ -113,3 +113,6 @@ fpath=(/Users/richardalhama/.docker/completions $fpath)
 autoload -Uz compinit
 compinit
 # End of Docker CLI completions
+
+PATH=~/.console-ninja/.bin:$PATH
+LIBVIRT_DEFAULT_URI='qemu:///system'

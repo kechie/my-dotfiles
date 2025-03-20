@@ -2,7 +2,7 @@
 
 # Some tmux-related shell aliases
 
-alias vpslogin='ssh eihcek_at_vps'
+alias vpslogin='ssh e_at_vps'
 
 if [[ "$os_type"  == "Darwin" ]]; then
   if [ -x /opt/homebrew/bin/eza ]; then
