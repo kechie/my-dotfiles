@@ -116,3 +116,9 @@ compinit
 
 PATH=~/.console-ninja/.bin:$PATH
 LIBVIRT_DEFAULT_URI='qemu:///system'
+
+# Color ls
+alias ls='ls --color=auto'
+alias ll='ls -l'
+alias la='ls -la'
+alias l='ls -CF' 
