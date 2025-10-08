@@ -101,7 +101,10 @@ zstyle ':completion:*:kill:*' command 'ps -u $USER -o pid,%cpu,tty,cputime,cmd'
 # make oh my posh work in apple terminal as well
 if [ "$TERM_PROGRAM" != "Apple_Terminal" ]; then
 #  eval "$(oh-my-posh init zsh)"
-  eval "$(oh-my-posh init zsh --config $HOME/.cache/oh-my-posh/themes/iterm2.omp.json)"
+# offline theme
+#  eval "$(oh-my-posh init zsh --config $HOME/.cache/oh-my-posh/themes/iterm2.omp.json)"
+# iterm2 theme online
+  eval "$(oh-my-posh init zsh --config 'https://raw.githubusercontent.com/JanDeDobbeleer/oh-my-posh/main/themes/iterm2.omp.json')"
 fi
 
 if [ -f ~/.zsh_aliases ]; then
@@ -109,13 +112,13 @@ if [ -f ~/.zsh_aliases ]; then
 fi
 
 # The following lines have been added by Docker Desktop to enable Docker CLI completions.
-fpath=(/Users/richardalhama/.docker/completions $fpath)
-autoload -Uz compinit
-compinit
+#fpath=(/Users/richardalhama/.docker/completions $fpath)
+#autoload -Uz compinit
+#compinit
 # End of Docker CLI completions
 
-PATH=~/.console-ninja/.bin:$PATH
-LIBVIRT_DEFAULT_URI='qemu:///system'
+#PATH=~/.console-ninja/.bin:$PATH
+#LIBVIRT_DEFAULT_URI='qemu:///system'
 
 # Color ls
 alias ls='ls --color=auto'
